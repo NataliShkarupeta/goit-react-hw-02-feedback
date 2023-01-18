@@ -1,3 +1,5 @@
+import { MassegeText } from "components/Statistics/Statistics.slyled"
+
 export  const Massage=()=>{
-    return <p>No feedback given</p>
+    return < MassegeText >No feedback given</ MassegeText>
 }

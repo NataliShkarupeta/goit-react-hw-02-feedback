@@ -26,21 +26,16 @@ export default class Reviews extends Component {
     return Math.round(positivePercentage);
   };
 
-  leaveReviewGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
+  leaveReview = (event) => {
+   const key = event.target.name
+  
+  this.setState(prevState => ({
+      [key]: prevState[key] + 1,
     }));
-  };
-  leaveReviewNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-  leaveReviewBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
-  };
+ 
+
+  }
+ 
 
   render() {
     return (
@@ -48,9 +43,8 @@ export default class Reviews extends Component {
         <Section>
           <TitlFeedback />
           <FeedbackOptions
-            reviewGoo={this.leaveReviewGood}
-            reviewNeutral={this.leaveReviewNeutral}
-            reviewBad={this.leaveReviewBad}
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.leaveReview}
           />
         </Section>
         <Section>

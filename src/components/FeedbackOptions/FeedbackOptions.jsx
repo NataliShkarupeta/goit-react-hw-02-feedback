@@ -2,18 +2,17 @@ import React from "react";
 import { ButtonBlock, BaseStyles } from 'components/Reviews/Reviews.styled';
 
 
-export const FeedbackOptions = ({reviewGoo, reviewNeutral, reviewBad}) => {
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  
   return (
     <ButtonBlock>
-      <button type="button" onClick={reviewGoo}>
-        Good
-      </button>
-      <button type="button" onClick={reviewNeutral}>
-        Neutral
-      </button>
-      <button type="button" onClick={reviewBad}>
-        Bad
-      </button>
+      {options.map(item => {
+       return (
+         <button key={item} onClick={onLeaveFeedback} name={item}>
+           {item}{' '}
+         </button>
+       );
+      })}
     </ButtonBlock>
   );
 };
@@ -21,3 +20,4 @@ export const FeedbackOptions = ({reviewGoo, reviewNeutral, reviewBad}) => {
 export const TitlFeedback =()=>{
  return  <BaseStyles>Please leave feedback</BaseStyles>;
 }
+

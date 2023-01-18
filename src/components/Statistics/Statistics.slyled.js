@@ -16,3 +16,9 @@ display: flex;
 flex-direction: column;
 gap: 15px;
 `
+
+export const MassegeText = styled.p`
+font-size: 20px;
+font-weight: 500;
+
+`
