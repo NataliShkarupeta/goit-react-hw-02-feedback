@@ -15,27 +15,26 @@ export default class Reviews extends Component {
   };
 
   countTotalFeedback = () => {
-    const total = this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    const total = good +neutral +bad;
     return total;
   };
 
   countPositiveFeedbackPercentage = () => {
+    const { good, neutral, bad } = this.state;
     const positivePercentage =
-      (this.state.good * 100) /
-      (this.state.good + this.state.neutral + this.state.bad);
+      (good * 100) /
+      (good + neutral + bad);
     return Math.round(positivePercentage);
   };
 
-  leaveReview = (event) => {
-   const key = event.target.name
-  
-  this.setState(prevState => ({
+  leaveReview = event => {
+    const key = event.target.name;
+
+    this.setState(prevState => ({
       [key]: prevState[key] + 1,
     }));
- 
-
-  }
- 
+  };
 
   render() {
     return (
