@@ -6,6 +6,7 @@ import {
   TitlFeedback,
 } from 'components/FeedbackOptions/FeedbackOptions';
 import { Section } from 'components/Section/Section';
+import { Massage } from './Default/DefaultMassage';
 
 export default class App extends Component {
   state = {
@@ -21,8 +22,8 @@ export default class App extends Component {
   };
 
   countPositiveFeedbackPercentage = () => {
-    const { good, neutral, bad } = this.state;
-    const positivePercentage = (good * 100) / (good + neutral + bad);
+    const { good } = this.state;
+    const positivePercentage = (good * 100) / this.countTotalFeedback();
     return Math.round(positivePercentage);
   };
 
@@ -46,13 +47,17 @@ export default class App extends Component {
         </Section>
         <Section>
           <NameStatistics />
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+          {this.countTotalFeedback() !== 0 ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Massage />
+          )}
         </Section>
       </Container>
     );

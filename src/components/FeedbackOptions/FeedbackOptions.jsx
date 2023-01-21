@@ -21,7 +21,7 @@ export const TitlFeedback = () => {
   return <BaseStyles>Please leave feedback</BaseStyles>;
 };
 
-FeedbackOptions.prototype = {
-  options: PropTypes.shape(PropTypes.array).isRequired,
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
